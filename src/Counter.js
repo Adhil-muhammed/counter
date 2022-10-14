@@ -1,37 +1,66 @@
+import React, { useEffect, useState } from "react";
 
-
-import React, { useEffect, useRef, useState } from "react";
-// import "./styles.css";
+import "./countere.css"
+import Button from 'react-bootstrap/Button';
 
 export default function Counter() {
+ 
   const [count, setCount] = useState(0);
-  // const [isActive,setIsActive] = useState(false)
-  let timer;
-  const handleStart = () => {
-    setCount(count + 1);
-    // setIsActive(true)
-  };
+  const [notification,setnotification] = useState(0);
+  
+  
 
-  const handleStop = () => {
-    clearTimeout(timer);
-  };
-  const handlereset = () => {
-    setCount(0);
-    clearTimeout(timer);
-  };
-  useEffect(() => {
-    if (count) {
-      timer = setTimeout(handleStart, 1500);
+
+useEffect(() => {
+  
+  
+  if (count >=10) {
+  
+     var id=setTimeout(() => {
+      setnotification(notification+1)
+    }, 1000);
+  }
+    if(notification===6){
+      clearTimeout(id)
+     
+      setCount( 0)
+      setnotification(false)
+  
     }
-  }, [count]);
-
+  
+    return () => {
+    
+    }
+  }, [count,notification])
+  
   return (
-    <div className="App">
-      <h1>Let's start the counter</h1>
-      <h3>{count}</h3>
-      <button onClick={handleStart}>start</button>
-      <button onClick={handleStop}>stop</button>
-      <button onClick={handlereset}>reset</button>
+   <>
+   <label className="counterPoint">Counter Point</label>
+    <div className="countrer">
+       
+      <div className="counterposition">
+{/* <label >count is 10 or more it will be re-render</label> */}
+      <Button  variant="danger" 
+        onClick={() => {
+          setCount(count + 1);
+        }}
+        >Click me and add</Button>
+        
     </div>
+      <label className="counters">{count}</label>
+        </div>
+      <label ></label>
+      <div className="notification">{ notification ? `Re-rendering....${notification}` : " "}</div>
+      {/* <div>{notification}</div> */}
+      <div>
+        {/* {notification===5 ? "RE rendering...." :null} */}
+      </div>
+     
+   
+      <h6 className="note">
+      Note: Count =10 or more than 10, it will start auto Re-rendering
+      </h6>
+    
+   </>
   );
 }

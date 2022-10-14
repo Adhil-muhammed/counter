@@ -1,5 +1,30 @@
-.countrer{
-    margin: 5rem;
-    background-color: antiquewhite;
+.counterPoint{
+    display: flex;
+    justify-content: center;
     font-family: sans-serif;
+    font-size: 32px;
+    margin: 1rem;
+    font-weight: 600;
+}
+
+.countrer{
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+}
+.note{
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    font-size: 15px;
+    color: red;
+}
+.notification{
+
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    font-size: 38px;
 }
